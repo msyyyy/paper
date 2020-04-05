@@ -147,3 +147,15 @@
 
 ### 数据表设计
 
+| 字段名      | 类型     | 长度 | 注释                     |
+| ----------- | -------- | ---- | ------------------------ |
+| resource_id | INT      | 11   | 资源ID，从1000起开始自增 |
+| id          | VARCHAR  | 45   | 标记                     |
+| content     | TINYTEXT | 1000 | 标题                     |
+| summary     | TEXT     | 1000 | 详细内容                 |
+| author      | TINYTEXT | 1000 | 作者                     |
+| img_index   | TINYTEXT | 1000 | 首页图片                 |
+| img_main    | TINYTEXT | 1000 | 列表图片                 |
+| language    | VARCHAR  | 45   | 年龄阶段                 |
+| between_age | VARCHAR  | 45   | 语言能力范围             |
+| url         | TEXT     | 1000 | 资源地址                 |

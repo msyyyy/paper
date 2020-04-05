@@ -23,7 +23,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     flag="./flag-mac"
 elif [[ "$(expr substr $(uname -s) 1 5)"=="Linux" ]];then
     sha="sha256sum "
-    flag="./flag-gnu"
+    flag="./flag-win"
+else
+    flag="./flag-win"
 fi
 if [[ "$1" == "-flag" ]]; then
     $(${flag} ${tmp_file} ${tmp_file})
