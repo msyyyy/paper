@@ -119,89 +119,122 @@
 
 ![2](<http://47.100.56.19/static/3.png>)
 
+### 评论流程设计
 
+评论功能包括发表评论、删除评论。用户可以点击动态界面中的发表按钮，弹出发表建议输入框，在输入框中，用户就可以输入自己想要发表的内容，然后点击确实按钮进行发表。发表结果就会在动态界面中显示出来。如果用户想要删除自己发表的内容，可以点击个人中心中的我的评论，会显示出来用户发表过的所有建，通过删除按钮将自己想要删除的那一行进行删除。发表评论流程图如图4所示。
+
+![3](<http://47.100.56.19/static/评论流程.png>)
 
 ## 数据库设计
 
 ### 数据库概念设计
 
-用户表(user)（用户ID，账号，密码，头像，姓名，性别，生日，状态 ，创建时间）
-|列名|数据类型|长度|是否为空|
-|---|---|---|---|
-|id|bigint||false|
-|username|varchar|20|false|
-|password|varchar|20|false|
-|icon|varchar|20|false|
-|name|varchar|20|false|
-|sex|boolean|20|false|
-|status|thinint||false|
-|create_time|varchar|20|false|
+用户表(user) 包括 用户ID，账号，密码，头像，姓名，性别，生日，状态 ，创建时间 属性
+
 ![3](<http://47.100.56.19/static/用户.png>)
 
-图书表(book) (图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间)
-|列名|数据类型|长度|是否为空|
-|---|---|---|---|
-|id|bigint||false|
-|isbn|varchar|20|false|
-|name|varchar|20|true|
-|author|varchar|20|false|
-|press|varchar|20|false|
-|press_time|varchar|20|false|
-|type|enum|2|false|
-|value|varchar|20|false|
-|comment|int||false|
-|save|int||false|
-|love|int||false|
-|create_time|varchar|20|false|
+图书表(book) 包括 图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间 属性
+
 
 ![4](<http://47.100.56.19/static/图书.png>)
 
-评论表(comment) (评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间)
-|列名|数据类型|长度|是否为空|
-|---|---|---|---|
-|id|bigint||false|
-|pid|varchar|20|false|
-|user_id|bigint||false|
-|book_id|bigint||false|
-|value|varchar|20|false|
-|create_time|varchar|20|false|
+评论表(comment) 包括 评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间 属性
+
 
 ![4](<http://47.100.56.19/static/评论.png>)
 
-收藏表(savemap) (收藏ID 图书Id ,用户Id  状态 创建时间)
-|列名|数据类型|长度|是否为空|
-|---|---|---|---|
-|id|varchar|20|false|
-|book_id|bigint||false|
-|user_id|bigint||false|
-|status|thinint||false|
-|create_time|varchar|20|false|
-
+收藏表(savemap) 包括 收藏ID 图书Id ,用户Id  状态 创建时间 属性
 
 ![4](<http://47.100.56.19/static/收藏.png>)
 
-喜爱表(lovemap )(喜爱ID 图书Id ,用户Id   状态 创建时间)
-|列名|数据类型|长度|是否为空|
-|---|---|---|---|
-|id|varchar|20|false|
-|bid|bigint||false|
-|uid|bigint||false|
-|status|thinint||false|
-|create_time|varchar|20|false|
+喜爱表(lovemap )包括 喜爱ID 图书Id ,用户Id   状态 创建时间 属性
 
 ![4](<http://47.100.56.19/static/喜爱.png>)
 
 ### 数据表设计
 
-| 字段名      | 类型     | 长度 | 注释                     |
-| ----------- | -------- | ---- | ------------------------ |
-| resource_id | INT      | 11   | 资源ID，从1000起开始自增 |
-| id          | VARCHAR  | 45   | 标记                     |
-| content     | TINYTEXT | 1000 | 标题                     |
-| summary     | TEXT     | 1000 | 详细内容                 |
-| author      | TINYTEXT | 1000 | 作者                     |
-| img_index   | TINYTEXT | 1000 | 首页图片                 |
-| img_main    | TINYTEXT | 1000 | 列表图片                 |
-| language    | VARCHAR  | 45   | 年龄阶段                 |
-| between_age | VARCHAR  | 45   | 语言能力范围             |
-| url         | TEXT     | 1000 | 资源地址                 |
+根据对系统数据关系模式的设计结果，数据库实现如下所示：
+
+- (1) 用户信息表
+
+用户信息表是用来管理用户的个人信息，包括 用户ID，账号，密码，头像，用户名，性别，生日，状态 ，创建时间，其中用户ID是唯一，所以设为主键。
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|用户Id，自增|
+|username|varchar|20|false|账户|
+|password|varchar|20|false|密码|
+|icon|varchar|20|false|头像|
+|name|varchar|20|false|用户名|
+|sex|boolean|20|false|性别|
+|birthday|varchar|45|false|生日|
+|status|thinint|10|false|状态(正常状态，被禁言状态等)|
+|create_time|varchar|20|false|创建时间|
+
+- （2） 图书信息表
+
+图书信息表是用来管理图书的相关信息 ，包括 图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间。其中图书ID是唯一的，所以设置为主键
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|图书Id|
+|isbn|varchar|20|false|图书isbn号|
+|name|varchar|20|true|图书名|
+|author|varchar|20|false|图书作者|
+|press|varchar|20|false|出版社|
+|press_time|varchar|20|false|出版时间|
+|type|varchar|45|false|类别|
+|value|varchar|20|false|评分|
+|comment|int|20|false|评论人数|
+|save|int|20|false|收藏人数|
+|love|int|20|false|喜爱人数|
+|create_time|varchar|20|false|创建时间|
+
+- (3)  评论表
+
+评论表是用来管理图书评论的相关信息 ，包括  评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间。其评论ID是唯一的，所以设置为主键
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|评论Id|
+|pid|varchar|20|false|评论PId|
+|user_id|bigint|20|false|用户Id|
+|book_id|bigint|20|false|图书Id|
+|value|varchar|20|false|评论内容|
+|create_time|varchar|20|false|创建时间|
+
+- (4) 收藏表
+
+收藏表是用来管理图书收藏的相关信息 ，包括   收藏ID 图书Id ,用户Id  状态 创建时间。其  收藏ID
+是唯一的，所以设置为主键。
+
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|varchar|20|false|收藏Id|
+|book_id|bigint|20|false|图书Id|
+|user_id|bigint|20|false|用户Id|
+|status|thinint|10|false|状态,正常或被删除|
+|create_time|varchar|20|false|创建时间|
+
+- (5) 喜爱表
+
+喜爱表是用来管理图书收藏的相关信息 ，包括   喜爱ID 图书Id ,用户Id  状态 创建时间。其  喜爱ID
+是唯一的，所以设置为主键。
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|varchar|20|false|喜爱Id|
+|book_id|bigint|20|false|图书Id|
+|user_id|bigint|20|false|用户Id|
+|status|thinint|10|false|状态,正常或被删除|
+|create_time|varchar|20|false|创建时间|
+
+
+
+# 系统实现
+
+该部分主要介绍系统功能的具体实现过程以及页面效果，系统功能中包括用户管理功能，图书查询功能，图书评论功能，图书排行功能，收藏图书功能。
+
+## 用户管理功能 
+
