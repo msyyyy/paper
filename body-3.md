@@ -126,22 +126,68 @@
 ### 数据库概念设计
 
 用户表(user)（用户ID，账号，密码，头像，姓名，性别，生日，状态 ，创建时间）
-
+|列名|数据类型|长度|是否为空|
+|---|---|---|---|
+|id|bigint||false|
+|username|varchar|20|false|
+|password|varchar|20|false|
+|icon|varchar|20|false|
+|name|varchar|20|false|
+|sex|boolean|20|false|
+|status|thinint||false|
+|create_time|varchar|20|false|
 ![3](<http://47.100.56.19/static/用户.png>)
 
 图书表(book) (图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间)
+|列名|数据类型|长度|是否为空|
+|---|---|---|---|
+|id|bigint||false|
+|isbn|varchar|20|false|
+|name|varchar|20|true|
+|author|varchar|20|false|
+|press|varchar|20|false|
+|press_time|varchar|20|false|
+|type|enum|2|false|
+|value|varchar|20|false|
+|comment|int||false|
+|save|int||false|
+|love|int||false|
+|create_time|varchar|20|false|
 
 ![4](<http://47.100.56.19/static/图书.png>)
 
 评论表(comment) (评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间)
+|列名|数据类型|长度|是否为空|
+|---|---|---|---|
+|id|bigint||false|
+|pid|varchar|20|false|
+|user_id|bigint||false|
+|book_id|bigint||false|
+|value|varchar|20|false|
+|create_time|varchar|20|false|
 
 ![4](<http://47.100.56.19/static/评论.png>)
 
 收藏表(savemap) (收藏ID 图书Id ,用户Id  状态 创建时间)
+|列名|数据类型|长度|是否为空|
+|---|---|---|---|
+|id|varchar|20|false|
+|book_id|bigint||false|
+|user_id|bigint||false|
+|status|thinint||false|
+|create_time|varchar|20|false|
+
 
 ![4](<http://47.100.56.19/static/收藏.png>)
 
 喜爱表(lovemap )(喜爱ID 图书Id ,用户Id   状态 创建时间)
+|列名|数据类型|长度|是否为空|
+|---|---|---|---|
+|id|varchar|20|false|
+|bid|bigint||false|
+|uid|bigint||false|
+|status|thinint||false|
+|create_time|varchar|20|false|
 
 ![4](<http://47.100.56.19/static/喜爱.png>)
 
