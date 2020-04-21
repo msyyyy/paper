@@ -1,7 +1,7 @@
-> create at:2020年04月 4日 14:41:50 sha256:336e790040d781751441ede429d7ac7847abffafe3f44d72d63960abf585e0b2 *28293
-# 摘 要
+> create at:2020年04月10日 15:38:57 sha256:8a011d2726446cfd444edefb6722700e90b472e0b785b0310ebce9d7396e590c *2297
 
-图书评价交流网站是能实现图书的管理，查询，通过排行榜和用户评论与交流筛选出更加优质的图书，极大地提高查找图书的效率的网站。
+
+**[ 摘 要 ]** 图书评价交流网站是能实现图书的管理，查询，通过排行榜和用户评论与交流筛选出更加优质的图书，极大地提高查找图书的效率的网站。
 
 本课题运用所学的需求分析的知识结合本人与学校的需求，整理成系统需求列表；在Linux环境下搭建JavaWeb与MySQL环境，根据系统需求对数据库进行设计；然后采用Spring boot对系统进行实现，运用MySQL对数据进行存储，最后对系统进行了系统部署与系统测试。 
 
@@ -11,19 +11,21 @@
 
  
 
-**关键词：JavaWeb MySQL Linux  图书评价与展示**
+**[ 关键词 ]**：JavaWeb MySQL Linux  图书评价
 
 
 
-# Abstract
 
-This topic uses the knowledge of needs analysis to combine the needs of myself and the school to organize the system requirements list; build a JavaWeb and MySQL environment in the Linux environment, and design the database according to the system requirements; and then use Spring boot to implement the system. The data was stored using MySQL, and the system was finally deployed and tested.
+
+**Abstract:** This topic uses the knowledge of needs analysis to combine the needs of myself and the school to organize the system requirements list; build a JavaWeb and MySQL environment in the Linux environment, and design the database according to the system requirements; and then use Spring boot to implement the system. The data was stored using MySQL, and the system was finally deployed and tested.
 
 This system is a book display system implemented by computer technology. The main system functions completed in this article are: user login module, book ranking module, book collection module, book management query module, and book evaluation display module.
 
 This system combines JavaWeb and MySQL to implement a modern book management and review system, which initially realizes the functions of displaying and reviewing books and collecting books by users.
 
 
+
+**key word:**  JavaWeb MySQL  Linux  Book reviews
 # 目 录
 [TOC]
 
@@ -43,7 +45,7 @@ This system combines JavaWeb and MySQL to implement a modern book management and
 
 本论文以图书评论与交流网站的需求分析及概念设计为切入点，运用理论与实际相结合的方法，构建一个包含读者信息，书籍信息和评论交流信息的图书馆管理系统。图书评论与交流网站是典型的信息管理系统,其开发主要包括后台数据库的建立和维护以及前端应用程序的开发两个方面。对于前者要求建立起数据一致性和完整性强、数据安全性好的库。而对于后者则要求应用程序功能完备,易使用等特点。
 
-因此本人结合图书评论与交流网站的要求，对MySQL数据库、Java程序设计进行了较深入的学习和应用，主要完成对图书评论与交流网站的需求分析、功能模块划分、数据库模式分析，并由此设计了数据库结构和应用程序。# 课题研究与开发技术基础
+因此本人结合图书评论与交流网站的要求，对MySQL数据库、Java程序设计进行了较深入的学习和应用，主要完成对图书评论与交流网站的需求分析、功能模块划分、数据库模式分析，并由此设计了数据库结构和应用程序。# 相关技术简介
 
 ## 1.3 Linux
 
@@ -57,15 +59,15 @@ Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它�
 
 ### 1.3.2 Linux特性
 
-1.开放性：系统遵循世界标准规范，特别是遵循开放系统互连(OSI)国际标准。
-2.多用户：系统资源可以被不同用户使用，每个用户对自己的资源(例如：文件、设备)有特定的权限，互相影响。
-3.多任务：它是计算机同时执行多个程序，而各个程序的运行互相独立。
-4.良好的用户界面：Linux向用户提供了两种界面：用户界面和系统调用。Linux还为用户提供了图形用户界面。它利用鼠标、菜单、窗口、滚劢条等设施，给用户呈现一个直观、易操作、交互性强的友好的图形化界面。
-5.设备独立性：是挃操作系统把所有外部设备统一当作成文件来看待，只要安装它们的驱劢程序，任何用户都可以象使用文件一样，操纵、使用这些设备，而不必知道它们的具体存在形式。Linux是具有设备独立性的操作系统，它的内核具有高度适应能力。
-6.提供了丰富的网络功能：完善的内置网络是Linux一大特点。
-7.可靠的安全系统：Linux采取了许多安全技术措施，包括对读、写控制、带保护的子系统、审计跟踪、核心授权等，这为网络多用户环境中的用户提供了必要的安全保障。
-8.良好的可移植性：是挃将操作系统从一个平台转移到另一个平台使它仍然能挄其自身的方式运行的能力。Linux是一种可移植的操作系统，能够在从微型计算机到大型计算机的任何环境中和任何平台上运行
-9.支持多文件系统　linux系统可以把许多不同的文件系统以挂载形式连接到本地主机上，包括Ext2/3、FAT32、NTFS、OS/2等文件系统，以及网络上其他计算机共享的文件系统NFS等，是数据备份、同步、复制的良好平台。
+1. 开放性：系统遵循世界标准规范，特别是遵循开放系统互连(OSI)国际标准。
+2. 多用户：系统资源可以被不同用户使用，每个用户对自己的资源(例如：文件、设备)有特定的权限，互相影响。
+3. 多任务：它是计算机同时执行多个程序，而各个程序的运行互相独立。
+4. 良好的用户界面：Linux向用户提供了两种界面：用户界面和系统调用。Linux还为用户提供了图形用户界面。它利用鼠标、菜单、窗口、滚劢条等设施，给用户呈现一个直观、易操作、交互性强的友好的图形化界面。
+5. 设备独立性：是挃操作系统把所有外部设备统一当作成文件来看待，只要安装它们的驱劢程序，任何用户都可以象使用文件一样，操纵、使用这些设备，而不必知道它们的具体存在形式。Linux是具有设备独立性的操作系统，它的内核具有高度适应能力。
+6. 提供了丰富的网络功能：完善的内置网络是Linux一大特点。
+7. 可靠的安全系统：Linux采取了许多安全技术措施，包括对读、写控制、带保护的子系统、审计跟踪、核心授权等，这为网络多用户环境中的用户提供了必要的安全保障。
+8. 良好的可移植性：是挃将操作系统从一个平台转移到另一个平台使它仍然能挄其自身的方式运行的能力。Linux是一种可移植的操作系统，能够在从微型计算机到大型计算机的任何环境中和任何平台上运行
+9. 支持多文件系统　linux系统可以把许多不同的文件系统以挂载形式连接到本地主机上，包括Ext2/3、FAT32、NTFS、OS/2等文件系统，以及网络上其他计算机共享的文件系统NFS等，是数据备份、同步、复制的良好平台。
 
 ## 1.4 Java环境开发
 
@@ -84,19 +86,19 @@ Java语言的语法与C语言和C++语言很接近，使得大多数程序员很
 Java语言提供类、接口和继承等原语，为了简单起见，只支持类之间的单继承，但支持接口之间的多继承，并支持类与接口之间的实现机制（关键字为implements）。总之，Java语言是一个纯的面向对象程序设计语言。
 
 3. Java语言是分布式的
-  Java语言支持Internet应用的开发，在基本的Java应用编程接口中有一个网络应用编程接口（java net），它提供了用于网络应用编程的类库，包括URL、URLConnection、Socket、ServerSocket等。Java的RMI（远程方法激活）机制也是开发分布式应用的重要手段。
+    Java语言支持Internet应用的开发，在基本的Java应用编程接口中有一个网络应用编程接口（java net），它提供了用于网络应用编程的类库，包括URL、URLConnection、Socket、ServerSocket等。Java的RMI（远程方法激活）机制也是开发分布式应用的重要手段。
 4. Java语言是健壮的
-  Java的强类型机制、异常处理、垃圾的自动收集等是Java程序健壮性的重要保证。对指针的丢弃是Java的明智选择。Java的安全检查机制使得Java更具健壮性。
+    Java的强类型机制、异常处理、垃圾的自动收集等是Java程序健壮性的重要保证。对指针的丢弃是Java的明智选择。Java的安全检查机制使得Java更具健壮性。
 5. Java语言是安全的
-  Java通常被用在网络环境中，为此，Java提供了一个安全机制以防恶意代码的攻击。除了Java语言具有的许多安全特性以外，Java对通过网络下载的类具有一个安全防范机制（类ClassLoader），如分配不同的名字空间以防替代本地的同名类、字节代码检查，并提供安全管理机制（类SecurityManager）让Java应用设置安全哨兵。
+    Java通常被用在网络环境中，为此，Java提供了一个安全机制以防恶意代码的攻击。除了Java语言具有的许多安全特性以外，Java对通过网络下载的类具有一个安全防范机制（类ClassLoader），如分配不同的名字空间以防替代本地的同名类、字节代码检查，并提供安全管理机制（类SecurityManager）让Java应用设置安全哨兵。
 6. Java语言是体系结构中立的
-  Java程序（后缀为java的文件）在Java平台上被编译为体系结构中立的字节码格式（后缀为class的文件），然后可以在实现这个Java平台的任何系统中运行。这种途径适合于异构的网络环境和软件的分发。
+    Java程序（后缀为java的文件）在Java平台上被编译为体系结构中立的字节码格式（后缀为class的文件），然后可以在实现这个Java平台的任何系统中运行。这种途径适合于异构的网络环境和软件的分发。
 7. Java语言是可移植的
-  这种可移植性来源于体系结构中立性，另外，Java还严格规定了各个基本数据类型的长度。Java系统本身也具有很强的可移植性，Java编译器是用Java实现的，Java的运行环境是用ANSI C实现的。
+    这种可移植性来源于体系结构中立性，另外，Java还严格规定了各个基本数据类型的长度。Java系统本身也具有很强的可移植性，Java编译器是用Java实现的，Java的运行环境是用ANSI C实现的。
 8. Java语言是解释型的
-  如前所述，Java程序在Java平台上被编译为字节码格式，然后可以在实现这个Java平台的任何系统中运行。在运行时，Java平台中的Java解释器对这些字节码进行解释执行，执行过程中需要的类在联接阶段被载入到运行环境中。
+    如前所述，Java程序在Java平台上被编译为字节码格式，然后可以在实现这个Java平台的任何系统中运行。在运行时，Java平台中的Java解释器对这些字节码进行解释执行，执行过程中需要的类在联接阶段被载入到运行环境中。
 9. Java是性能略高的
-  与那些解释型的高级脚本语言相比，Java的性能还是较优的。
+    与那些解释型的高级脚本语言相比，Java的性能还是较优的。
 10. Java语言是原生支持多线程的
     在Java语言中，线程是一种特殊的对象，它必须由Thread类或其子（孙）类来创建。通常有两种方法来创建线程：其一，使用型构为Thread(Runnable)的构造子将一个实现了Runnable接口的对象包装成一个线程；其二，从Thread类派生出子类并重写run方法，使用该子类创建的对象即为线程。值得注意的是Thread类已经实现了Runnable接口，因此，任何一个线程均有它的run方法，而run方法中包含了线程所要运行的代码。线程的活动由一组方法来控制。Java语言支持多个线程的同时执行，并提供多线程之间的同步机制（关键字为synchronized）。
 11. Java语言是动态的
@@ -111,35 +113,35 @@ MySQL是一个开放源码的小型关联式数据库管理系统，开发者为
 
 ### 1.6.2 MySQL 特性
 
-（1）使用C和C++编写，并使用了多种编译器进行测试，保证源代码的可移植性；
+1.  使用C和C++编写，并使用了多种编译器进行测试，保证源代码的可移植性；
 
-（2）支持AIX、FreeBSD、HP-UX、Linux、Mac OS、NovellNetware、OpenBSD、OS/2 Wrap、Solaris、Windows等多种操作系统；
+2. 支持AIX、FreeBSD、HP-UX、Linux、Mac OS、NovellNetware、OpenBSD、OS/2 Wrap、Solaris、Windows等多种操作系统；
 
-（3）为多种编程语言提供了API。这些编程语言包括C、C++、Python、Java、Perl、PHP、Eiffel、Ruby和Tcl等；
+3. 为多种编程语言提供了API。这些编程语言包括C、C++、Python、Java、Perl、PHP、Eiffel、Ruby和Tcl等；
 
-（4）支持多线程，充分利用CPU资源；
+4. 支持多线程，充分利用CPU资源；
 
-（5）优化的SQL查询算法，有效地提高查询速度；
+5. 优化的SQL查询算法，有效地提高查询速度；
 
-（6）既能够作为一个单独的应用程序应用在客户端服务器网络环境中，也能够作为一个库而嵌入到其他的软件中；
+6. 既能够作为一个单独的应用程序应用在客户端服务器网络环境中，也能够作为一个库而嵌入到其他的软件中；
 
-（7）提供多语言支持，常见的编码如中文的GB 2312、BIG5，日文的Shift_JIS等都可以用作数据表名和数据列名；
+7. 提供多语言支持，常见的编码如中文的GB 2312、BIG5，日文的Shift_JIS等都可以用作数据表名和数据列名；
 
-（8）提供TCP/IP、ODBC和JDBC等多种数据库连接途径；
+8. 提供TCP/IP、ODBC和JDBC等多种数据库连接途径；
 
-（9）提供用于管理、检查、优化数据库操作的管理工具；
+9. 提供用于管理、检查、优化数据库操作的管理工具；
 
-（10）支持大型的数据库，可以处理拥有上千万条记录的大型数据库；
+10. 支持大型的数据库，可以处理拥有上千万条记录的大型数据库；
 
-（11）支持多种存储引擎；
+11. 支持多种存储引擎；
 
-（12）Mysql是开源的，所以你不需要支付额外的费用；
+12. Mysql是开源的，所以你不需要支付额外的费用；
 
-（13）MySQL使用标准的SQL数据语言形式；
+13. MySQL使用标准的SQL数据语言形式；
 
-（14）Mysql对PHP有很好的支持，PHP是目前最流行的Web开发语言；
+14. Mysql对PHP有很好的支持，PHP是目前最流行的Web开发语言；
 
-（15）Mysql是可以定制的，采用了GPL协议，你可以修改源码来开发自己的Mysql系统。 
+15. Mysql是可以定制的，采用了GPL协议，你可以修改源码来开发自己的Mysql系统。 
 
 ## 1.7 JQuery
 
@@ -210,7 +212,7 @@ IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境。IntelliJ�
 
 
 
-# 第2章 系统总体设计
+# 第2章 系统总体分析
 
 ## 2.1 需求分析
 
@@ -363,45 +365,516 @@ IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境。IntelliJ�
 
 ![2](<http://47.100.56.19/static/3.png>)
 
+### 3.2.2 评论流程设计
 
+评论功能包括发表评论、删除评论。用户可以点击动态界面中的发表按钮，弹出发表建议输入框，在输入框中，用户就可以输入自己想要发表的内容，然后点击确实按钮进行发表。发表结果就会在动态界面中显示出来。如果用户想要删除自己发表的内容，可以点击个人中心中的我的评论，会显示出来用户发表过的所有建，通过删除按钮将自己想要删除的那一行进行删除。发表评论流程图如图4所示。
+
+![3](<http://47.100.56.19/static/评论流程.png>)
 
 ## 3.3 数据库设计
 
 ### 3.3.1 数据库概念设计
 
-用户表(user)（用户ID，账号，密码，头像，姓名，性别，生日，状态 ，创建时间）
+用户表(user) 包括 用户ID，账号，密码，头像，姓名，性别，生日，状态 ，创建时间 属性
 
 ![3](<http://47.100.56.19/static/用户.png>)
 
-图书表(book) (图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间)
+图书表(book) 包括 图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间 属性
+
 
 ![4](<http://47.100.56.19/static/图书.png>)
 
-评论表(comment) (评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间)
+评论表(comment) 包括 评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间 属性
+
 
 ![4](<http://47.100.56.19/static/评论.png>)
 
-收藏表(savemap) (收藏ID 图书Id ,用户Id  状态 创建时间)
+收藏表(savemap) 包括 收藏ID 图书Id ,用户Id  状态 创建时间 属性
 
 ![4](<http://47.100.56.19/static/收藏.png>)
 
-喜爱表(lovemap )(喜爱ID 图书Id ,用户Id   状态 创建时间)
+喜爱表(lovemap )包括 喜爱ID 图书Id ,用户Id   状态 创建时间 属性
 
 ![4](<http://47.100.56.19/static/喜爱.png>)
 
 ### 3.3.2 数据表设计
 
-# 第4章 系统测试
+根据对系统数据关系模式的设计结果，数据库实现如下所示：
 
-## 4.1 测试目的
+- (1) 用户信息表
 
-## 4.2 测试环境
+用户信息表是用来管理用户的个人信息，包括 用户ID，账号，密码，头像，用户名，性别，生日，状态 ，创建时间，其中用户ID是唯一，所以设为主键。
 
-## 4.3 主要测试说明
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|用户Id，自增|
+|username|varchar|20|false|账户|
+|password|varchar|20|false|密码|
+|icon|varchar|20|false|头像|
+|name|varchar|20|false|用户名|
+|sex|boolean|20|false|性别|
+|birthday|varchar|45|false|生日|
+|status|thinint|10|false|状态(正常状态，被禁言状态等)|
+|create_time|varchar|20|false|创建时间|
 
-## 4.4 测试总结
+- （2） 图书信息表
+
+图书信息表是用来管理图书的相关信息 ，包括 图书 Id 图书isbn，图书名，作者，出版社，出版时间，类别，评分，评分人数 收藏人数 喜爱人数 ，创建时间。其中图书ID是唯一的，所以设置为主键
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|图书Id|
+|isbn|varchar|20|false|图书isbn号|
+|name|varchar|20|true|图书名|
+|author|varchar|20|false|图书作者|
+|press|varchar|20|false|出版社|
+|press_time|varchar|20|false|出版时间|
+|type|varchar|45|false|类别|
+|value|varchar|20|false|评分|
+|comment|int|20|false|评论人数|
+|save|int|20|false|收藏人数|
+|love|int|20|false|喜爱人数|
+|create_time|varchar|20|false|创建时间|
+
+- (3)  评论表
+
+评论表是用来管理图书评论的相关信息 ，包括  评论ID,评论PID,图书id,用户Id 评论内容 ，创建时间。其评论ID是唯一的，所以设置为主键
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|bigint|20|false|评论Id|
+|pid|varchar|20|false|评论PId|
+|user_id|bigint|20|false|用户Id|
+|book_id|bigint|20|false|图书Id|
+|value|varchar|20|false|评论内容|
+|create_time|varchar|20|false|创建时间|
+
+- (4) 收藏表
+
+收藏表是用来管理图书收藏的相关信息 ，包括   收藏ID 图书Id ,用户Id  状态 创建时间。其  收藏ID
+是唯一的，所以设置为主键。
 
 
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|varchar|20|false|收藏Id|
+|book_id|bigint|20|false|图书Id|
+|user_id|bigint|20|false|用户Id|
+|status|thinint|10|false|状态,正常或被删除|
+|create_time|varchar|20|false|创建时间|
+
+- (5) 喜爱表
+
+喜爱表是用来管理图书收藏的相关信息 ，包括   喜爱ID 图书Id ,用户Id  状态 创建时间。其  喜爱ID
+是唯一的，所以设置为主键。
+
+|列名|数据类型|长度|是否为空|注释|
+|---|---|---|---|---|
+|id|varchar|20|false|喜爱Id|
+|book_id|bigint|20|false|图书Id|
+|user_id|bigint|20|false|用户Id|
+|status|thinint|10|false|状态,正常或被删除|
+|create_time|varchar|20|false|创建时间|
+
+
+
+# 第4章 系统实现
+
+该部分主要介绍系统功能的具体实现过程以及页面效果，系统功能中包括用户管理功能，图书查询功能，图书评论功能，图书排行功能，收藏图书功能。
+
+## 4.1 用户登录功能
+
+![2](<http://47.100.56.19/static/登录.png>)
+
+```java
+@RestController
+public class Login {
+
+    final UserDao dao;
+
+    public static String newToken(){
+        return "003768-a334bc-221fa";
+    }
+
+    @Autowired
+    public Login(UserDao dao) {
+        this.dao = dao;
+    }
+
+    @PostMapping("/login")
+    public ReturnWrap login(@RequestBody User u){
+        List<User> u1 = dao.findAll();
+        for (User user : u1) {
+            if (u.getPassword().equals(user.getPassword())&&u.getName().equals(user.getName())){
+                return ReturnWrap.returnWithData(new Result(0,newToken()));
+            }
+        }
+        return ReturnWrap.errorWithData("login failed!");
+    }
+
+    @PostMapping("/user")
+    public ReturnWrap register(@RequestBody User u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/user/{id}")
+    public ReturnWrap<User> get(@PathVariable Long id){
+       return ReturnWrap.returnWithData(dao.getOne(id));
+    }
+
+    @GetMapping("/users")
+    public ReturnWrap<List<User>> get(){
+        return ReturnWrap.returnWithData(dao.findAll());
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ReturnWrap<Void> delete(@PathVariable Long id){
+        dao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}")
+    public ReturnWrap<Void> modify(@PathVariable Long id, @RequestBody User u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+}
+
+```
+
+
+
+## 4.2 用户管理功能 
+
+
+
+
+
+![2](<http://47.100.56.19/static/用户管理.png>)
+
+```java
+@RestController
+public class UserBook {
+
+    private final UserDao userDao;
+
+    private final HistoryDao historyDao;
+
+    private final BookDao bookDao;
+
+    private final CBook cBook;
+
+    private final CommentDao commentDao;
+
+    @Autowired
+    public UserBook(UserDao dao, HistoryDao historyDao, BookDao bdao, CBook cBook, CommentDao cdao) {
+        this.userDao = dao;
+        this.historyDao = historyDao;
+        this.bookDao = bdao;
+        this.cBook = cBook;
+        this.commentDao = cdao;
+    }
+
+    @GetMapping("/user/{id}/lovebook")
+    public ReturnWrap<List<Book>> getLoveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getLove();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    @GetMapping("/user/{id}/notlovebook")
+    public ReturnWrap<List<Book>> getNotLoveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getNotlove();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    @GetMapping("/user/{id}/savebook")
+    public ReturnWrap<List<Book>> getSaveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getSave();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    private List<Book> getBookByCondition(long u) {
+        List<Integer> l = Binary.getBit(u);
+        List<Book> b = new ArrayList<>();
+        for (Integer integer : l) {
+            b.add(bookDao.getOne(integer.longValue()));
+        }
+        return b;
+    }
+
+    @PutMapping("/user/{id}/notlovebook/{bid}")
+    public ReturnWrap SetNotLoveBook(@PathVariable long id,@PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setNotlove(u.getNotlove()|(1 << bid));
+        userDao.save(u);
+        cBook.notLoveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}/savebook/{bid}")
+    public ReturnWrap SetSaveBook(@PathVariable long id,@PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setSave(u.getSave()|(1 << bid));
+        userDao.save(u);
+        cBook.saveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}/lovebook/{bid}")
+    public ReturnWrap setLoveBook(@PathVariable long id, @PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setLove(u.getLove()|(1 << bid));
+        userDao.save(u);
+        cBook.loveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/user/{id}/comment")
+    public ReturnWrap GetComment(@PathVariable long id){
+        List<Comment> c =  commentDao.findAll();
+        c = c.stream().filter(b -> b.getUserId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+
+    @PostMapping("/user/history")
+    public ReturnWrap<Void> addHistory(@RequestBody History history){
+        historyDao.save(history);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @DeleteMapping("/history/{id}")
+    public ReturnWrap<Void> deleteHistory(@PathVariable long id){
+        historyDao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+
+    @GetMapping("/user/{id}/histories")
+    public ReturnWrap<List<History>> getHistory(@PathVariable long id){
+        List<History> h = historyDao.findAll().stream().filter(i -> i.getUserId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(h);
+    }
+
+    @GetMapping("/user/{id}/history")
+    public ReturnWrap<List<History>> getHistoryWithOffset(@PathVariable long id, @PathParam("offset") int offset,@PathParam("length") int length){
+        List<History> h = historyDao.findAll().stream().filter(i -> i.getUserId() == id).collect(Collectors.toList());
+        return ListUtil.getByCondition(offset,length,h);
+    }
+}
+
+```
+
+
+
+## 4.3 图书查询功能
+
+![2](<http://47.100.56.19/static/搜索.png>)
+
+```java
+ @GetMapping("/book/search/{name}")
+    public ReturnWrap<List<Book>> searchByName(@PathVariable String name){
+        List<Book> c = bookDao.findAll();
+        c = c.stream().filter(b -> b.getName().contains(name) || b.getIsbn().equals(name)).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+```
+
+
+
+## 4.4 图书评论功能
+
+![2](<http://47.100.56.19/static/图书评论.png>)
+
+```java
+@RestController
+public class Comment
+{
+
+    final private CommentDao dao;
+
+    @Autowired
+    public Comment(CommentDao dao) {
+        this.dao = dao;
+    }
+
+    @PostMapping("/comment")
+    public ReturnWrap Create(com.yyw.bookExchange.data.Comment u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+
+    @DeleteMapping("/comment/{id}")
+    public ReturnWrap Delete(@PathVariable Long id){
+        dao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/comment/{id}")
+    public ReturnWrap Query(@PathVariable Long id){
+        return ReturnWrap.returnWithData(dao.findById(id));
+    }
+
+    @PutMapping("/comment/{id}")
+    public ReturnWrap Update(@PathVariable Long id,@RequestBody com.yyw.bookExchange.data.Comment u){
+        dao.deleteById(id);
+        dao.save(u);
+        return ReturnWrap.returnWithData(u);
+    }
+}
+
+
+```
+
+```java
+@GetMapping("/book/{id}/comment")
+    public ReturnWrap<List<Comment>> GetComment(@PathVariable long id){
+        List<Comment> c = commentDao.findAll();
+        c = c.stream().filter(b -> b.getBookId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+```
+
+
+
+## 4.5 收藏图书功能
+
+![2](<http://47.100.56.19/static/添加收藏.png>)
+
+
+
+```java
+ @PutMapping("/book/{id}/saveadd")
+    public ReturnWrap<Void> saveAdd(@PathVariable long id){
+        Book b = bookDao.getOne(id);
+        b.setSave(b.getSave()+1);
+        bookDao.save(b);
+        return ReturnWrap.SUCCEED;
+    }
+```
+
+
+
+## 4.6 图书排行功能
+
+![2](<http://47.100.56.19/static/排行榜.png>)
+
+```java
+@RestController
+public class BookRank {
+    private final BookDao bookDao;
+
+    @Autowired
+    public BookRank(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
+
+
+    @GetMapping("/bookrank/love")
+    public ReturnWrap<List<Book>> getLoveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getLove));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+    @GetMapping("/bookrank/notlove")
+    public ReturnWrap<List<Book>> getNotLoveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getNotLove));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+    @GetMapping("/bookrank/save")
+    public ReturnWrap<List<Book>> getSaveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getSave));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+}
+```
+
+
+
+# 第5章 系统测试
+
+软件测试是软件开发中重要的一项活动，为了保证软件开发实现的质量，促进软件的正确性、完整性、质量和安全性，软件测试经典定义是：在规定条件下对应用程序进行操作，发现程序存在的问题，对软件的质量进行衡量，最后进行评估判断是否满足设计要求[10]。
+
+## 5.1 测试目的和方法
+
+软件测试是为了发现软件中的错误，降低代码出错风险，保证代码质量。
+
+- 软件测试是为了检验产品会否满足设计需求，包括功能特性及非功能特性与设计限制。
+
+- 软件测试是为了保证软件运行的高可靠性。
+
+软件测试方法种类很多，进行分类大概分为黑盒测试、白盒测试和灰盒测试。黑盒测试是把软件系统当做一个黑箱，不了解内部结构。从软件的行为进行测试；白盒测试是设计者了解软件系统内部结构，并使用软件内部知识进行测试；灰盒测试介于黑盒测试和白盒测试之间[11]。
+
+### 5.1.1 单元测试
+
+元测试是为了保证系统每一个功能模块能够正确运行，检验软件基本组成单位的正确性，测试的对象是软件设计的最小单位：函数
+
+### 5.1.2 系统测试
+
+单元测试完成之后，将单元测试组成的子系统以一个完整的系统进行测试。系统测试，主要包括：功能测试、联合测试、组装测试等，对系统的接口集成后的功能进行正确性检测，检查各个单元之间的接口是否正确。
+
+### 5.1.3 测试验收
+
+测试验收指软件系统的实现是否符合预期设计要求而进行的测试，这一阶段一般被称为使用者验收测试，从普通用户角度进行测试。
+
+测试的主要内容包括：
+
+（1）布局测试：对图书评论与交流网站界面布局进行测试，通过多组测试"图书评论与交流系统满足预期要求。
+
+（2）β测试：邀请了普通用户（模拟用户）对图书评论与交流网站整体功能进行测试，测试过程中未发现问题，达到预期系统设计要求。
+
+图书评论与交流网站采取单元测试来对后端功能模块进行测试，单元测试完成后对相应的模块功能进行修改完善，最后进行系统总体测试。全部测试通过，达到功能模块的设计需求，符合系统设计。
+
+## 5.2 测试的内容
+
+1.服务端系统测试
+
+（1）查询测试，主要包括通过isbn查询图书，通过书名查询图书。
+
+（2）删除测试，主要包括删除评论，删除收藏，删除用户，删除图书。
+
+（3）新增测试，主要包括新增图书，新增评论，新增用户，新增收藏，新增喜爱。
+
+（4）修改测试，主要包括图书修改，用户信息修改。
+
+（5） 排行榜测试 ，主要包括收藏排行，喜爱排行，评分排行。
+
+
+
+
+
+## 5.3 测试结果
+
+根据所设计的测试内容，对"文渊阁"古典文学在线学习与鉴赏系统进行测试，测试结果如表6所示。
+
+| 序号 | 测试内容               | 测试结果 |
+| :--- | :--------------------- | :------- |
+| 1.1  | 通过isbn查询图书       | PASS     |
+| 1.2  | 通过图书名查询图书     | PASS     |
+| 2.1  | 删除评论               | PASS     |
+| 2.2  | 删除收藏               | PASS     |
+| 2.3  | 删除用户               | PASS     |
+| 2.4  | 删除图书               | PASS     |
+| 3.1  | 新增图书               | PASS     |
+| 3.2  | 新增对图书的评论       | PASS     |
+| 3.3  | 新增对他人评论的回复   | PASS     |
+| 3.4  | 新增用户               | PASS     |
+| 3.5  | 新增收藏               | PASS     |
+| 3.6  | 新增喜爱               | PASS     |
+| 4.1  | 图书信息修改           | PASS     |
+| 4.2  | 用户信息修改           | PASS     |
+| 5.1  | 根据收藏数进行图书排行 | PASS     |
+| 5.2  | 根据喜爱数进行图书排行 | PASS     |
+| 5.3  | 根据评分进行图书排行   | PASS     |
+
+通过一系列的软件测试，系统运行未出现问题，各个功能模块符合预期系统设计，系统实用性高。
 
 # 结束语
 
@@ -448,9 +921,5 @@ IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境。IntelliJ�
 * 失败不可怕，只要不趴下，昂首向前走，希望总会有的。
 * 同组同学相互包容，彼此合作，取长补短，才能铸就最后的成功。可以说这次毕业设计是对所学知识的一次运用和检阅，同时对自学能力提出很高的要求，所以平时的学习离开思考，就是严重的错误，我们学习不应该有偏科现象，各方面知识都要接触，这样做才能为毕业设计打下基石。  
 
-最后,我要感谢的母校南阳理工学院,为我提供的良好的学习与发展环境。感谢我的指导教师徐春雨给予我帮助，感谢母校开放、公正的言论环境,现代、实用的学习环境,舒适、便捷的生活环境让我顺利度过了人生的关键三年。愿所有校园里认识的,不认识的；来过的,走过的……愿你们珍惜握在手里的现在,抓住机遇,拥有一个美好的明天。感谢 frank 的辛劳付出
-
-# 附录1 程序代码
-
-
+最后,我要感谢的母校南阳理工学院,为我提供的良好的学习与发展环境。感谢我的指导教师徐春雨给予我帮助，感谢母校开放、公正的言论环境,现代、实用的学习环境,舒适、便捷的生活环境让我顺利度过了人生的关键三年。愿所有校园里认识的,不认识的；来过的,走过的……愿你们珍惜握在手里的现在,抓住机遇,拥有一个美好的明天。
 

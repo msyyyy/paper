@@ -1,6 +1,6 @@
-# 摘 要
 
-图书评价交流网站是能实现图书的管理，查询，通过排行榜和用户评论与交流筛选出更加优质的图书，极大地提高查找图书的效率的网站。
+
+**[ 摘 要 ]** 图书评价交流网站是能实现图书的管理，查询，通过排行榜和用户评论与交流筛选出更加优质的图书，极大地提高查找图书的效率的网站。
 
 本课题运用所学的需求分析的知识结合本人与学校的需求，整理成系统需求列表；在Linux环境下搭建JavaWeb与MySQL环境，根据系统需求对数据库进行设计；然后采用Spring boot对系统进行实现，运用MySQL对数据进行存储，最后对系统进行了系统部署与系统测试。 
 
@@ -10,15 +10,18 @@
 
  
 
-**关键词：JavaWeb MySQL Linux  图书评价与展示**
+**[ 关键词 ]**：JavaWeb MySQL Linux  图书评价
 
 
 
-# Abstract
 
-This topic uses the knowledge of needs analysis to combine the needs of myself and the school to organize the system requirements list; build a JavaWeb and MySQL environment in the Linux environment, and design the database according to the system requirements; and then use Spring boot to implement the system. The data was stored using MySQL, and the system was finally deployed and tested.
+
+**Abstract:** This topic uses the knowledge of needs analysis to combine the needs of myself and the school to organize the system requirements list; build a JavaWeb and MySQL environment in the Linux environment, and design the database according to the system requirements; and then use Spring boot to implement the system. The data was stored using MySQL, and the system was finally deployed and tested.
 
 This system is a book display system implemented by computer technology. The main system functions completed in this article are: user login module, book ranking module, book collection module, book management query module, and book evaluation display module.
 
 This system combines JavaWeb and MySQL to implement a modern book management and review system, which initially realizes the functions of displaying and reviewing books and collecting books by users.
 
+
+
+**key word:**  JavaWeb MySQL  Linux  Book reviews

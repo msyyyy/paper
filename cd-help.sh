@@ -13,7 +13,7 @@ function show_process() {
     let i++
     str='='${str}
     done
-    if [[ $1 -eq 100 ]]; then
+    if [[ $1 -eq 1 ]]; then
         printf "\e[0m\n"
     fi
 }

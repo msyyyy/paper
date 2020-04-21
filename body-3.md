@@ -236,5 +236,403 @@
 
 该部分主要介绍系统功能的具体实现过程以及页面效果，系统功能中包括用户管理功能，图书查询功能，图书评论功能，图书排行功能，收藏图书功能。
 
+## 用户登录功能
+
+![2](<http://47.100.56.19/static/登录.png>)
+
+```java
+@RestController
+public class Login {
+
+    final UserDao dao;
+
+    public static String newToken(){
+        return "003768-a334bc-221fa";
+    }
+
+    @Autowired
+    public Login(UserDao dao) {
+        this.dao = dao;
+    }
+
+    @PostMapping("/login")
+    public ReturnWrap login(@RequestBody User u){
+        List<User> u1 = dao.findAll();
+        for (User user : u1) {
+            if (u.getPassword().equals(user.getPassword())&&u.getName().equals(user.getName())){
+                return ReturnWrap.returnWithData(new Result(0,newToken()));
+            }
+        }
+        return ReturnWrap.errorWithData("login failed!");
+    }
+
+    @PostMapping("/user")
+    public ReturnWrap register(@RequestBody User u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/user/{id}")
+    public ReturnWrap<User> get(@PathVariable Long id){
+       return ReturnWrap.returnWithData(dao.getOne(id));
+    }
+
+    @GetMapping("/users")
+    public ReturnWrap<List<User>> get(){
+        return ReturnWrap.returnWithData(dao.findAll());
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ReturnWrap<Void> delete(@PathVariable Long id){
+        dao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}")
+    public ReturnWrap<Void> modify(@PathVariable Long id, @RequestBody User u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+}
+
+```
+
+
+
 ## 用户管理功能 
+
+
+
+
+
+![2](<http://47.100.56.19/static/用户管理.png>)
+
+```java
+@RestController
+public class UserBook {
+
+    private final UserDao userDao;
+
+    private final HistoryDao historyDao;
+
+    private final BookDao bookDao;
+
+    private final CBook cBook;
+
+    private final CommentDao commentDao;
+
+    @Autowired
+    public UserBook(UserDao dao, HistoryDao historyDao, BookDao bdao, CBook cBook, CommentDao cdao) {
+        this.userDao = dao;
+        this.historyDao = historyDao;
+        this.bookDao = bdao;
+        this.cBook = cBook;
+        this.commentDao = cdao;
+    }
+
+    @GetMapping("/user/{id}/lovebook")
+    public ReturnWrap<List<Book>> getLoveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getLove();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    @GetMapping("/user/{id}/notlovebook")
+    public ReturnWrap<List<Book>> getNotLoveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getNotlove();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    @GetMapping("/user/{id}/savebook")
+    public ReturnWrap<List<Book>> getSaveBook(@PathVariable long id){
+        long u = userDao.getOne(id).getSave();
+        return ReturnWrap.returnWithData(getBookByCondition(u));
+    }
+
+    private List<Book> getBookByCondition(long u) {
+        List<Integer> l = Binary.getBit(u);
+        List<Book> b = new ArrayList<>();
+        for (Integer integer : l) {
+            b.add(bookDao.getOne(integer.longValue()));
+        }
+        return b;
+    }
+
+    @PutMapping("/user/{id}/notlovebook/{bid}")
+    public ReturnWrap SetNotLoveBook(@PathVariable long id,@PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setNotlove(u.getNotlove()|(1 << bid));
+        userDao.save(u);
+        cBook.notLoveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}/savebook/{bid}")
+    public ReturnWrap SetSaveBook(@PathVariable long id,@PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setSave(u.getSave()|(1 << bid));
+        userDao.save(u);
+        cBook.saveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @PutMapping("/user/{id}/lovebook/{bid}")
+    public ReturnWrap setLoveBook(@PathVariable long id, @PathVariable long bid){
+        User u = userDao.getOne(id);
+        u.setLove(u.getLove()|(1 << bid));
+        userDao.save(u);
+        cBook.loveAdd(bid);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/user/{id}/comment")
+    public ReturnWrap GetComment(@PathVariable long id){
+        List<Comment> c =  commentDao.findAll();
+        c = c.stream().filter(b -> b.getUserId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+
+    @PostMapping("/user/history")
+    public ReturnWrap<Void> addHistory(@RequestBody History history){
+        historyDao.save(history);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @DeleteMapping("/history/{id}")
+    public ReturnWrap<Void> deleteHistory(@PathVariable long id){
+        historyDao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+
+    @GetMapping("/user/{id}/histories")
+    public ReturnWrap<List<History>> getHistory(@PathVariable long id){
+        List<History> h = historyDao.findAll().stream().filter(i -> i.getUserId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(h);
+    }
+
+    @GetMapping("/user/{id}/history")
+    public ReturnWrap<List<History>> getHistoryWithOffset(@PathVariable long id, @PathParam("offset") int offset,@PathParam("length") int length){
+        List<History> h = historyDao.findAll().stream().filter(i -> i.getUserId() == id).collect(Collectors.toList());
+        return ListUtil.getByCondition(offset,length,h);
+    }
+}
+ @GetMapping("/book/search/{name}")
+    public ReturnWrap<List<Book>> searchByName(@PathVariable String name){
+        List<Book> c = bookDao.findAll();
+        c = c.stream().filter(b -> b.getName().contains(name) || b.getIsbn().equals(name)).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+
+```
+
+
+
+## 图书查询功能
+
+![2](<http://47.100.56.19/static/搜索.png>)
+
+```java
+ @GetMapping("/book/search/{name}")
+    public ReturnWrap<List<Book>> searchByName(@PathVariable String name){
+        List<Book> c = bookDao.findAll();
+        c = c.stream().filter(b -> b.getName().contains(name) || b.getIsbn().equals(name)).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+ @GetMapping("/book/{id}")
+    public ReturnWrap<Book> get(@PathVariable Long id){
+        return ReturnWrap.returnWithData(bookDao.getOne(id));
+    }
+
+@GetMapping("/book/{id}/comment")
+    public ReturnWrap<List<Comment>> GetComment(@PathVariable long id){
+        List<Comment> c = commentDao.findAll();
+        c = c.stream().filter(b -> b.getBookId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+
+@PutMapping("/book/{id}/saveadd")
+    public ReturnWrap<Void> saveAdd(@PathVariable long id){
+        Book b = bookDao.getOne(id);
+        b.setSave(b.getSave()+1);
+        bookDao.save(b);
+        return ReturnWrap.SUCCEED;
+    }
+// 通过图书ID获取图书评论信息
+@GetMapping("/book/{id}/comment")
+    public ReturnWrap<List<Comment>> GetComment(@PathVariable long id){
+        List<Comment> c = commentDao.findAll();
+        c = c.stream().filter(b -> b.getBookId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+
+ @PostMapping("/comment")
+    public ReturnWrap Create(com.yyw.bookExchange.data.Comment u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+
+    @DeleteMapping("/comment/{id}")
+    public ReturnWrap Delete(@PathVariable Long id){
+        dao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/comment/{id}")
+    public ReturnWrap Query(@PathVariable Long id){
+        return ReturnWrap.returnWithData(dao.findById(id));
+    }
+
+    @PutMapping("/comment/{id}")
+    public ReturnWrap Update(@PathVariable Long id,@RequestBody com.yyw.bookExchange.data.Comment u){
+        dao.deleteById(id);
+        dao.save(u);
+        return ReturnWrap.returnWithData(u);
+    }
+
+```
+
+
+
+## 图书评论功能
+
+![2](<http://47.100.56.19/static/图书评论.png>)
+
+```java
+ @GetMapping("/bookrank/love")
+    public ReturnWrap<List<Book>> getLoveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getLove));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+    @GetMapping("/bookrank/save")
+    public ReturnWrap<List<Book>> getSaveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getSave));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+ @PutMapping("/book/{id}/saveadd")
+    public ReturnWrap<Void> saveAdd(@PathVariable long id){
+        Book b = bookDao.getOne(id);
+        b.setSave(b.getSave()+1);
+        bookDao.save(b);
+        return ReturnWrap.SUCCEED;
+    }
+@RestController
+public class Comment
+{
+
+    final private CommentDao dao;
+
+    @Autowired
+    public Comment(CommentDao dao) {
+        this.dao = dao;
+    }
+
+    @PostMapping("/comment")
+    public ReturnWrap Create(com.yyw.bookExchange.data.Comment u){
+        dao.save(u);
+        return ReturnWrap.SUCCEED;
+    }
+
+
+    @DeleteMapping("/comment/{id}")
+    public ReturnWrap Delete(@PathVariable Long id){
+        dao.deleteById(id);
+        return ReturnWrap.SUCCEED;
+    }
+
+    @GetMapping("/comment/{id}")
+    public ReturnWrap Query(@PathVariable Long id){
+        return ReturnWrap.returnWithData(dao.findById(id));
+    }
+
+    @PutMapping("/comment/{id}")
+    public ReturnWrap Update(@PathVariable Long id,@RequestBody com.yyw.bookExchange.data.Comment u){
+        dao.deleteById(id);
+        dao.save(u);
+        return ReturnWrap.returnWithData(u);
+    }
+}
+
+
+```
+
+```java
+@GetMapping("/book/{id}/comment")
+    public ReturnWrap<List<Comment>> GetComment(@PathVariable long id){
+        List<Comment> c = commentDao.findAll();
+        c = c.stream().filter(b -> b.getBookId() == id).collect(Collectors.toList());
+        return ReturnWrap.returnWithData(c);
+    }
+```
+
+
+
+## 收藏图书功能
+
+![2](<http://47.100.56.19/static/添加收藏.png>)
+
+
+
+```java
+ @PutMapping("/book/{id}/saveadd")
+    public ReturnWrap<Void> saveAdd(@PathVariable long id){
+        Book b = bookDao.getOne(id);
+        b.setSave(b.getSave()+1);
+        bookDao.save(b);
+        return ReturnWrap.SUCCEED;
+    }
+
+ @GetMapping("/user/{id}")
+    public ReturnWrap<User> get(@PathVariable Long id){
+       return ReturnWrap.returnWithData(dao.getOne(id));
+    }
+```
+
+
+
+## 图书排行功能
+
+![2](<http://47.100.56.19/static/排行榜.png>)
+
+```java
+@RestController
+public class BookRank {
+    private final BookDao bookDao;
+
+    @Autowired
+    public BookRank(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
+
+
+    @GetMapping("/bookrank/love")
+    public ReturnWrap<List<Book>> getLoveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getLove));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+    @GetMapping("/bookrank/notlove")
+    public ReturnWrap<List<Book>> getNotLoveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getNotLove));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+    @GetMapping("/bookrank/save")
+    public ReturnWrap<List<Book>> getSaveWithOffset(@PathParam("offset") int offset, @PathParam("length") int length){
+        List<Book> books = bookDao.findAll();
+        books.sort(Comparator.comparingInt(Book::getSave));
+        return ListUtil.getByCondition(offset, length, books);
+    }
+
+}
+```
+
+
 
